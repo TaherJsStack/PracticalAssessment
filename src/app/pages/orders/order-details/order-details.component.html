@@ -1,0 +1,104 @@
+
+<ng-container *ngIf="order && order.OrderId; else noOrderFound">
+    
+    <section class="col-md-12 col-12 col-sm-12">
+    
+        <div class="card mt-3">
+            <div class="card-header">
+            <h4>Order Details</h4>
+            </div>
+            <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Order Date</th>
+                            <th>Total</th>
+                            <th>Payment Type</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{ order.OrderDate }}</td>
+                            <td appCountOrderTotal [products]="order.Products"></td>
+                            <td>{{ order.PaymentType }}</td>
+                        </tr>             
+                    </tbody>
+                </table>
+            </div>
+            </div>
+        </div>
+    
+        <div class="card mt-3">
+            <div class="card-header">
+                <h4>Products Details</h4>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>ProductName</th>
+                                <th>ProductImg</th>
+                                <th>ProductPrice</th>
+                                <th>Quantity</th>
+                                <th>AvailablePieces</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let orderProduct of orderProducts">
+                                <td>{{ orderProduct.ProductName }}</td>
+                                <td>
+                                <img src="{{ orderProduct.ProductImg }}" alt="" width="50">  
+                                </td>
+                                <td>{{ orderProduct.ProductPrice }}</td>
+                                <td>{{ orderProduct.Quantity }}</td>
+                                <td>{{ orderProduct.AvailablePieces }}</td>
+                            </tr>             
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    
+        <div class="card mt-3">
+            <div class="card-header">
+                <h4>User Details</h4>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Phone</th>
+                                <th>Address</th>
+                                <th>RegisterDate</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>{{ user.Name }}</td>
+                                <td>{{ user.Email }}</td>
+                                <td>{{ user.Phone }}</td>
+                                <td>{{ user.Address }}</td>
+                                <td>{{ user.RegisterDate }}</td>
+                            </tr>             
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</ng-container>
+
+<ng-template #noOrderFound>
+    <section class="min-vh-100 w-100 d-flex flex-column align-items-center justify-content-center text-center">
+        <div class="">
+            <p> Sorry There's No Data To Show</p>
+            <small>Select New Order</small>
+        </div>
+    </section>
+</ng-template>
