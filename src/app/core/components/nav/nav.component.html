@@ -1,0 +1,12 @@
+<mat-toolbar>
+  <button mat-button class="" *ngFor="let item of navListItems" [routerLink]="item.path">
+    {{ item.title }}
+  </button>
+  <span class="spacer"></span>
+  <button mat-icon-button class="favorite-icon" aria-label="">
+    <mat-icon>favorite</mat-icon>
+  </button>
+  <button mat-icon-button class="" aria-label="">
+    <mat-icon>share</mat-icon>
+  </button>
+</mat-toolbar>
