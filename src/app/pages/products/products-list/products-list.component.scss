@@ -1,0 +1,11 @@
+.product-container{
+    padding: 0 1rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    grid-gap: 10px;
+
+    .product-card{
+        padding: 20px;
+        text-align: center;
+    }
+}
