@@ -9,6 +9,7 @@ import { NavComponent } from '../components/nav/nav.component';
 import { FooterComponent } from '../components/footer/footer.component';
 import { OrderUserNamePipe } from '../pipes/order-user-name.pipe';
 import { CountOrderTotalDirective } from '../directives';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { CountOrderTotalDirective } from '../directives';
     FormsModule,
     RouterModule,
     ReactiveFormsModule,
+    HttpClientModule,
     MatModule,
     NgIf,
     NgFor,
@@ -28,6 +30,7 @@ import { CountOrderTotalDirective } from '../directives';
   exports: [
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
     NavComponent,
     FooterComponent,
     NgIf,

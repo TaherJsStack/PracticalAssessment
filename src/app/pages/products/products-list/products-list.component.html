@@ -1,1 +1,6 @@
-<p>products list component works!</p>
+<div class="product-container">
+    <app-product-card 
+        class="product-card" 
+        *ngFor="let product of productsList; let i =index" [product]="product">
+    </app-product-card>
+</div>

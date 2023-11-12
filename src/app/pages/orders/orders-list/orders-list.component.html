@@ -1,0 +1,29 @@
+<div class="table-responsive">
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Order Date</th>
+            <th scope="col">Order Id</th>
+            <th scope="col">Total</th>
+            <th scope="col">Payment Type</th>
+            <th scope="col">User Name</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let order of ordersList; let i = index">
+            <th scope="row">{{ i + 1 }}</th>
+            <!-- <td>{{order.OrderDate | date }}</td> -->
+            <td>{{order.OrderDate }}</td>
+            <td>{{order.OrderId}}</td>
+            <td appCountOrderTotal [products]="order.Products"></td>
+            <td>{{order.PaymentType}}</td>
+            <td>{{order.UserId | orderUserName }}</td>
+            <td>
+              <button mat-flat-button color="primary" routerLink="/orders/order-details/{{order.OrderId}}">Details</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+</div>
