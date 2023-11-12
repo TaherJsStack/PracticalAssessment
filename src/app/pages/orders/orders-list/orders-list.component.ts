@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { OrderModel } from 'src/app/core/models';
+import { CustomersService, OrdersService, ProductsService } from 'src/app/core/services';
 
 @Component({
   selector: 'app-orders-list',
@@ -7,8 +9,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OrdersListComponent implements OnInit {
   
-  constructor( ) {}
+  protected ordersList: OrderModel[] = [] 
+
+  constructor(
+    private OrdersService: OrdersService,
+    private CustomersService: CustomersService,
+    private ProductsService: ProductsService
+  ) {}
   
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    this.getPorductsList()
+    this.CustomersService.getCustomersList()
+    this.getOrdersList()
+  }
   
+  getOrdersList() {
+    this.OrdersService.getOrdersList().subscribe((res) => {
+      this.ordersList = res
+    })
+  }
+
+  getPorductsList() {
+    this.ProductsService.getProductsList().subscribe()
+  }
 }
