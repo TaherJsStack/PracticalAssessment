@@ -11,15 +11,16 @@ import { CustomersService, OrdersService, ProductsService } from 'src/app/core/s
 })
 export class OrderDetailsComponent implements OnInit {
 
+  total:          number          = 0;
+  orderProducts:  ProductModel[]  = [];
   order:          OrderModel      = {} as OrderModel;
   user:           UserModel       = {} as UserModel;
-  orderProducts:  ProductModel[]  = [];
 
   constructor(
     private route:            ActivatedRoute,
-    private OrdersService:    OrdersService,
-    private ProductsService:  ProductsService,
-    private CustomersService: CustomersService
+    private ordersService:    OrdersService,
+    private productsService:  ProductsService,
+    private customersService: CustomersService,
   ) {}
 
   ngOnInit(): void {
@@ -35,36 +36,48 @@ export class OrderDetailsComponent implements OnInit {
   }
 
   getOrderById(orderId: number){
-    this.order = this.OrdersService.getOrderById(orderId) as OrderModel;
-    if (this.order && this.order.UserId) {
-      this.getUserData(this.order.UserId)
-    }
-    if (this.order && this.order.Products.length) {
-      this.getOrderProductsIds(this.order.Products)
-    }
+    this.ordersService.getOrderById(orderId).subscribe(res => {
+      if (res) {        
+        this.order = res[0]
+        this.getUserData(res[0].UserId)
+        this.getOrderProductsIds(res[0].Products)
+      }
+    });    
   }
 
   getUserData(userId: string){
-    this.user = this.CustomersService.getUserByUserId(userId) as UserModel
+    this.customersService.getUserByUserId(userId).subscribe(res => {
+      this.user = res[0]
+    })
   }
 
   getOrderProductsIds(products: OrderProductModel[]) {
     let idsList = products.map(product => product.ProductId)
-    this.getOrderProductsByIds(idsList)
-  }
-
-  getOrderProductsByIds(orderProductsIdsList: number[]) {
-    this.orderProducts = this.ProductsService.getOrderProductsByIdsList(orderProductsIdsList)
-    if (this.orderProducts.length) {
-      this.joinquantityToEachPorduct(this.orderProducts)
+    if (idsList.length) {
+      this.getOrderProductsByIds(idsList)
     }
   }
 
-  async joinquantityToEachPorduct(orderProduct: ProductModel[]) {
-    this.orderProducts = await orderProduct.map(product1 => {
-      const foundProduct = this.order.Products.find(product2 => product2.ProductId === product1.ProductId);
-      return { ...product1, ...foundProduct };
+  getOrderProductsByIds(orderProductsIdsList: number[]) {
+    this.productsService.getOrderProductsByIdsList(orderProductsIdsList).subscribe(res => {
+      if (res.length) {
+        this.joinquantityToEachPorduct(res)
+      }
     })
+  }
+
+  joinquantityToEachPorduct(_orderProduct: ProductModel[]) {
+    this.orderProducts = _orderProduct.map(orderProduct => {
+      const foundProduct = this.order.Products.find(foundOrderProduct => foundOrderProduct.ProductId === orderProduct.ProductId);
+      return { ...orderProduct, ...foundProduct };
+    })
+    this.calcOrderTotal()
+  }
+
+  calcOrderTotal() {
+    this.total = this.orderProducts.reduce((acc, curr) => {
+      return acc + curr.Quantity * curr.ProductPrice;
+    },0)
   }
 
 }

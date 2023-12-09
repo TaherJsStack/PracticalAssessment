@@ -9,7 +9,7 @@ import { CustomersService, OrdersService, ProductsService } from 'src/app/core/s
 })
 export class OrdersListComponent implements OnInit {
   
-  protected ordersList: OrderModel[] = [] 
+   ordersList: OrderModel[] = [] 
 
   constructor(
     private OrdersService: OrdersService,

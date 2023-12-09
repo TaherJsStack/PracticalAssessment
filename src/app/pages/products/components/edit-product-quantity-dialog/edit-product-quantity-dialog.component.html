@@ -1,0 +1,17 @@
+
+<h1 mat-dialog-title>Edit Product Quantity</h1>
+<div mat-dialog-content>
+  <p>ProductName:   {{ data.ProductName }}</p>
+  <p>ProductPrice:  {{ data.ProductPrice }}</p>
+  <figure>
+    <img [src]="data.ProductImg" alt="" srcset="" width="150">
+  </figure>
+  <mat-form-field>
+    <mat-label>Available Pieces</mat-label>
+    <input matInput [(ngModel)]="AvailablePieces"  #ctrl="ngModel">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">No Thanks</button>
+  <button mat-button [mat-dialog-close]="ctrl.value" cdkFocusInitial>Ok</button>
+</div>

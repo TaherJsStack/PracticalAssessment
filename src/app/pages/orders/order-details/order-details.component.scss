@@ -1,0 +1,17 @@
+.card{
+    .card-header{
+        h4{
+            font-size: var(--title-font-size);
+        }
+    }
+}
+
+.no-order-found{
+    min-height: 100%;
+}
+
+@media (max-width: 576px) { 
+    :host ::ng-deep .mat-horizontal-content-container {
+        padding:0 !important;
+    }
+}

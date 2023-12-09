@@ -1,4 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { SharedModule, MatModule } from 'src/app/core/shared';
+import { OrdersRoutingModule } from './orders-routing.module';
 
 import { OrdersComponent } from './orders.component';
 
@@ -8,7 +10,12 @@ describe('OrdersComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ OrdersComponent ]
+      declarations: [ OrdersComponent ],
+      imports: [
+        OrdersRoutingModule,
+        SharedModule,
+        MatModule
+      ]
     })
     .compileComponents();
 
@@ -20,4 +27,8 @@ describe('OrdersComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+    // describe('TEST HTML CONTENT ', () => {})
+  // describe('TEST TS LOGIC', () => {})
+  
 });

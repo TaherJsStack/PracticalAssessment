@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { CheckoutComponent } from './pages/checkout/checkout.component';
 
 const routes: Routes = [
   {
@@ -17,6 +18,11 @@ const routes: Routes = [
       import("./pages/orders/orders.module").then(
         (m) => m.OrdersModule
       ),
+  },
+  {
+    path: "checkout",
+    title: 'checkout',
+    component: CheckoutComponent
   },
 ];
 

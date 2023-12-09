@@ -3,10 +3,12 @@
     {{ item.title }}
   </button>
   <span class="spacer"></span>
-  <button mat-icon-button class="favorite-icon" aria-label="">
-    <mat-icon>favorite</mat-icon>
+  <button mat-icon-button class="" aria-label="" routerLink="checkout">
+    <div matBadge="{{ itemsCount$ | async }}" matBadgeOverlap="false" class="demo-section" matBadgePosition="before">
+      <mat-icon>add_shopping_cart</mat-icon>
+    </div>
   </button>
   <button mat-icon-button class="" aria-label="">
-    <mat-icon>share</mat-icon>
+    <mat-icon>favorite</mat-icon>
   </button>
 </mat-toolbar>
