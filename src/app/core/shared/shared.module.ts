@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NgFor, NgIf } from '@angular/common';
+import { NgFor, NgIf, AsyncPipe } from '@angular/common';
 
 import { MatModule } from './mat.module';
 import { RouterModule } from '@angular/router';
 import { NavComponent } from '../components/nav/nav.component';
 import { FooterComponent } from '../components/footer/footer.component';
-import { OrderUserNamePipe } from '../pipes/order-user-name.pipe';
+import { OrderUserNamePipe, DataTimePipe } from '../pipes';
 import { CountOrderTotalDirective } from '../directives';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -15,28 +15,30 @@ import { HttpClientModule } from '@angular/common/http';
   declarations: [
     NavComponent,
     FooterComponent,
+    DataTimePipe,
     OrderUserNamePipe,
-    CountOrderTotalDirective
+    CountOrderTotalDirective,
   ],
   imports: [
+    NgIf,
+    NgFor,
+    AsyncPipe,
+    MatModule,
     FormsModule,
     RouterModule,
     ReactiveFormsModule,
     HttpClientModule,
-    MatModule,
-    NgIf,
-    NgFor,
   ],
   exports: [
+    MatModule,
     FormsModule,
-    ReactiveFormsModule,
-    HttpClientModule,
     NavComponent,
+    DataTimePipe,
     FooterComponent,
-    NgIf,
-    NgFor,
+    HttpClientModule,
     OrderUserNamePipe,
-    CountOrderTotalDirective
+    ReactiveFormsModule,
+    CountOrderTotalDirective,
   ],
   providers: [],
 })

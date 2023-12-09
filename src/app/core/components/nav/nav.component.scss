@@ -1,4 +1,9 @@
-
+mat-toolbar{
+    height: 100%;
+    button{
+        font-size: var(--nav-font-size);
+    }
+}
 .spacer {
     flex: 1 1 auto;
 }

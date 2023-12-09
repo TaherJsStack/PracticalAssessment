@@ -12,11 +12,18 @@ export class CountHighlightDirective {
     warn:     "count-warn-highlight"
   };  // CSS class for highlighting
 
-  constructor(private elementRef: ElementRef) {}
+  constructor(
+    private elementRef: ElementRef,
+    ) {}
 
   ngOnChanges(changes: SimpleChanges): void {
 
     let currentValue = +changes['countHighlight'].currentValue;
+
+    if (!changes['countHighlight'].firstChange && changes['countHighlight'].previousValue == 0) {
+      this.elementRef.nativeElement.classList.remove(this.addClassToCount.warn);
+      currentValue = +changes['countHighlight'].currentValue;
+    }
     
     if ( currentValue == 0) {
       // If the count is == 0, apply the warn class

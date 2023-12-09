@@ -1,0 +1,13 @@
+:host ::ng-deep .mat-mdc-list-item-unscoped-content {
+    display: flex;
+    gap: 10px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    mat-form-field{
+        width: 100%;
+    }
+}

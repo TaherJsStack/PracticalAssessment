@@ -24,3 +24,8 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The appli
     
 **3-** Order Details Page: a page with the order details (Order Details, Customer Details, products
         details and quantity).
+
+
+          ng run PracticalAssessment:deploy --base-href=/PracticalAssessment/
+
+          <img src="./src/assets/Capture.PNG">

@@ -2,3 +2,46 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+:root{
+    --nav-height: 45px;
+    --footer-height: 40px;
+
+    --nav-font-size: 16px;
+
+    --title-font-size: 16px;
+    --subtitle-font-size: 14px;
+    --text-font-size: 12px;
+  }
+
+  @media (max-width: 576px) { 
+    :root{
+        --nav-height: 45px;
+        --footer-height: 40px;
+    
+        --nav-font-size: 14px;
+    
+        --title-font-size: 13px;
+        --subtitle-font-size: 11px;
+        --text-font-size: 10px;
+      }
+    
+}
+
+table{
+    thead{
+        tr{
+            th{
+                font-size: var(--title-font-size);
+            }
+        }
+    }
+    tbody{
+        tr{
+            th,
+            td{
+                font-size: var(--subtitle-font-size);
+            }
+        }
+    }
+}

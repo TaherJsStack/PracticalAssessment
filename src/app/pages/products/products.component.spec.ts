@@ -1,4 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { SharedModule, MatModule } from 'src/app/core/shared';
+import { ProductsRoutingModule } from './products-routing.module';
 
 import { ProductsComponent } from './products.component';
 
@@ -8,7 +10,12 @@ describe('ProductsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ProductsComponent ]
+      declarations: [ ProductsComponent ],
+      imports: [
+        ProductsRoutingModule,
+        SharedModule,
+        MatModule
+      ]
     })
     .compileComponents();
 
@@ -20,4 +27,8 @@ describe('ProductsComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+  
+    // describe('TEST HTML CONTENT ', () => {})
+  // describe('TEST TS LOGIC', () => {})
+  
 });

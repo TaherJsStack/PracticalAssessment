@@ -1,11 +1,16 @@
-<nav>
-  <app-nav></app-nav>
-</nav>
-<main>
-  <div class="container">
-      <router-outlet></router-outlet>
-  </div>
-</main>
-<footer>
-  <app-footer></app-footer>
-</footer>
+<div class="content">
+    <span class="d-none">{{ title }}</span>
+</div>
+<section>
+    <nav>
+        <app-nav></app-nav>
+    </nav>
+    <main>
+        <div class="container py-5">
+            <router-outlet></router-outlet>
+        </div>
+    </main>
+    <footer>
+        <app-footer></app-footer>
+    </footer>
+</section>

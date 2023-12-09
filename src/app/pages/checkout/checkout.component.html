@@ -1,0 +1,49 @@
+<div class="row">
+    <div class="col-md-6">
+        <mat-list role="list">
+            <mat-list-item class="d-flex" role="listitem" *ngFor="let product of orderProducts">
+                <p>
+                    {{ product.ProductName }} 
+                </p>
+                <figure>
+                    <img src="{{ product.ProductImg }}" alt="" srcset="" width="20">
+                </figure>
+                <p class="ProductPrice"> {{ product.ProductPrice }} </p>
+                <p class="Quantity">Quantity: {{ product.Quantity }} </p>
+                <p class="Total">Total: {{ product.ProductPrice * product.Quantity }}</p>
+            </mat-list-item>
+        </mat-list>
+    </div>
+    <div class="col-md-6">
+        user info
+
+        <form [formGroup]="form" >
+            <mat-form-field appearance="fill">
+                <mat-label>full name</mat-label>
+                <input matInput placeholder="Placeholder" formControlName="Name">
+            </mat-form-field>
+            
+              <mat-form-field>
+                <mat-label>Phone number</mat-label>
+                <input matInput  formControlName="Phone">
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Enter your email</mat-label>
+                <input matInput placeholder="pat@example.com" formControlName="Email">
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Full Address</mat-label>
+                <textarea matInput formControlName="Address"></textarea>
+            </mat-form-field>
+
+            <button 
+                class="mt-5"
+                (click)="submit()" 
+                mat-raised-button 
+                color="primary">
+                Submit Order
+            </button>
+        </form>
+    </div>
+</div>

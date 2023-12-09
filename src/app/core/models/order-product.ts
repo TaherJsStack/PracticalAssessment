@@ -1,5 +1,6 @@
 export interface OrderProductModel {
-    "ProductId":    number,
-    "Quantity":     number,
-    "Price":        number
+    ProductName?: string,
+    ProductId:    number,
+    Quantity:     number,
+    ProductPrice: number
 }

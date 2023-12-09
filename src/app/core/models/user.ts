@@ -1,9 +1,9 @@
 export interface UserModel {
-  "Id":           string,
-  "Name":         string,
-  "Email":        string,
-  "Phone":        string,
-  "Address":      string,
-  "RegisterDate": string
+  Id:           string,
+  Name:         string,
+  Email:        string,
+  Phone:        string,
+  Address:      string,
+  RegisterDate: string
 }
   

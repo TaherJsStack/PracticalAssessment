@@ -1,0 +1,12 @@
+<mat-card class="card" appCountHighlight countHighlight="{{product.AvailablePieces}}">
+    <img mat-card-image src="{{ product.ProductImg }}" alt="">
+    <mat-card-content>
+        <b class="title">{{ product.ProductName }}</b> <br>
+        <strong class="sub-title">Price:{{ product.ProductPrice }}</strong> <br>
+        <small >Available Pieces: {{product.AvailablePieces}}</small> 
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-raised-button color="primary" (click)="openEditProductQuantityDialog()" [class.d-none]="product.AvailablePieces">Edit Quantity</button>
+        <app-product-card-buttons [product]="product" [class.d-none]="!product.AvailablePieces"></app-product-card-buttons>
+    </mat-card-actions>
+</mat-card>
